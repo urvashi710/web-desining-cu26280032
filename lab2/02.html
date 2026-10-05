@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="02.css">
+</head>
+<body>
+    <main class="panel">
+        <h1>Student registration</h1>
+        <p>Complete each required field to register.</p>
+        <form action="#" method="post">
+            <label for="student-name">Full name</label>
+            <input id="student-name" name="student-name" type="text" minlength="2" maxlength="60" pattern="[A-Za-z][A-Za-z .'-]{1,59}" title="Use 2–60 letters, spaces, periods, apostrophes, or hyphens." required>
+
+            <label for="student-email">Email address</label>
+            <input id="student-email" name="student-email" type="email" maxlength="100" required>
+
+            <label for="student-id">Student ID</label>
+            <input id="student-id" name="student-id" type="text" minlength="6" maxlength="12" pattern="[A-Za-z0-9]{6,12}" title="Enter 6–12 letters or numbers." required>
+
+            <label for="course">Course</label>
+            <select id="course" name="course" required>
+                <option value="" selected disabled>Select a course</option>
+                <option value="computer-science">Computer Science</option>
+                <option value="design">Web Design</option>
+                <option value="business">Business</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+    </main>
+</body>
+</html>

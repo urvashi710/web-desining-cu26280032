@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 18</p>
+        <h1>My todo list</h1>
+        <form id="todo-form" class="inline-form">
+            <label for="todo-input">New task</label>
+            <input id="todo-input" type="text" maxlength="120" placeholder="What needs doing?" required>
+            <button type="submit">Add task</button>
+        </form>
+        <ul id="todo-list" class="item-list" aria-live="polite"></ul>
+    </main>
+    <script>
+        document.getElementById("todo-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const input = document.getElementById("todo-input");
+            const taskText = input.value.trim();
+            if (!taskText) return;
+            const item = document.createElement("li");
+            const text = document.createElement("span");
+            text.textContent = taskText;
+            const removeButton = document.createElement("button");
+            removeButton.type = "button";
+            removeButton.textContent = "Delete";
+            removeButton.setAttribute("aria-label", `Delete task: ${taskText}`);
+            removeButton.addEventListener("click", () => item.remove());
+            item.append(text, removeButton);
+            document.getElementById("todo-list").appendChild(item);
+            input.value = "";
+            input.focus();
+        });
+    </script>
+</body>
+</html>

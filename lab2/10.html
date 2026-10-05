@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry Table</title>
+    <link rel="stylesheet" href="10.css">
+</head>
+<body>
+    <main class="panel">
+        <h1>Weekly hours entry</h1>
+        <form action="#" method="post">
+            <div class="table-wrap">
+                <table>
+                    <caption>Enter hours worked by team member</caption>
+                    <thead><tr><th scope="col">Employee</th><th scope="col">Department</th><th scope="col">Hours</th></tr></thead>
+                    <tbody>
+                        <tr><td><label class="visually-hidden" for="employee-1">Employee 1</label><input id="employee-1" name="employee-1" value="Avery Chen"></td><td>Design</td><td><label class="visually-hidden" for="hours-1">Hours for Avery Chen</label><input id="hours-1" name="hours-1" type="number" min="0" max="80" value="36"></td></tr>
+                        <tr><td><label class="visually-hidden" for="employee-2">Employee 2</label><input id="employee-2" name="employee-2" value="Jordan Lee"></td><td>Engineering</td><td><label class="visually-hidden" for="hours-2">Hours for Jordan Lee</label><input id="hours-2" name="hours-2" type="number" min="0" max="80" value="40"></td></tr>
+                        <tr><td><label class="visually-hidden" for="employee-3">Employee 3</label><input id="employee-3" name="employee-3" value="Sam Rivera"></td><td>Support</td><td><label class="visually-hidden" for="hours-3">Hours for Sam Rivera</label><input id="hours-3" name="hours-3" type="number" min="0" max="80" value="32"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="submit">Save entries</button>
+        </form>
+    </main>
+</body>
+</html>

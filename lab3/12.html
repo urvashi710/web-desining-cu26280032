@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card clock-card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 12</p>
+        <h1>Digital clock</h1>
+        <time id="clock" class="clock" aria-live="off"></time>
+        <p id="clock-date" class="hint"></p>
+    </main>
+    <script>
+        const clock = document.getElementById("clock");
+        const dateDisplay = document.getElementById("clock-date");
+        function updateClock() {
+            const now = new Date();
+            clock.dateTime = now.toISOString();
+            clock.textContent = now.toLocaleTimeString();
+            dateDisplay.textContent = now.toLocaleDateString(undefined, {
+                weekday: "long", year: "numeric", month: "long", day: "numeric"
+            });
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>

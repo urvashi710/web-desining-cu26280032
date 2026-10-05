@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create DOM Elements</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 9</p>
+        <h1>Dynamic note list</h1>
+        <form id="note-form" class="inline-form">
+            <label for="note-text">New note</label>
+            <input id="note-text" type="text" maxlength="120" placeholder="Type a note" required>
+            <button type="submit">Add note</button>
+        </form>
+        <ul id="notes" class="item-list" aria-live="polite"></ul>
+    </main>
+    <script>
+        document.getElementById("note-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const input = document.getElementById("note-text");
+            const item = document.createElement("li");
+            item.textContent = input.value.trim();
+            if (!item.textContent) return;
+            document.getElementById("notes").appendChild(item);
+            input.value = "";
+            input.focus();
+        });
+    </script>
+</body>
+</html>

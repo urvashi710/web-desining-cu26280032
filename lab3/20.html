@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Generator</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 20</p>
+        <h1>Dynamic table generator</h1>
+        <form id="table-form" class="inline-form">
+            <div><label for="row-count">Rows (1–20)</label><input id="row-count" type="number" min="1" max="20" value="4" required></div>
+            <div><label for="column-count">Columns (1–10)</label><input id="column-count" type="number" min="1" max="10" value="3" required></div>
+            <button type="submit">Generate table</button>
+        </form>
+        <p id="table-message" class="hint" aria-live="polite"></p>
+        <div id="table-container" class="table-wrap"></div>
+    </main>
+    <script>
+        document.getElementById("table-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const rows = Number(document.getElementById("row-count").value);
+            const columns = Number(document.getElementById("column-count").value);
+            const container = document.getElementById("table-container");
+            const message = document.getElementById("table-message");
+            container.replaceChildren();
+            if (!Number.isInteger(rows) || rows < 1 || rows > 20 ||
+                !Number.isInteger(columns) || columns < 1 || columns > 10) {
+                message.textContent = "Choose between 1–20 rows and 1–10 columns.";
+                return;
+            }
+            const table = document.createElement("table");
+            const caption = document.createElement("caption");
+            caption.textContent = `${rows} rows by ${columns} columns`;
+            table.appendChild(caption);
+            for (let row = 0; row < rows; row++) {
+                const tr = document.createElement("tr");
+                for (let column = 0; column < columns; column++) {
+                    const cell = document.createElement(row === 0 ? "th" : "td");
+                    if (row === 0) cell.scope = "col";
+                    cell.textContent = row === 0 ? `Column ${column + 1}` : `Row ${row}, cell ${column + 1}`;
+                    tr.appendChild(cell);
+                }
+                table.appendChild(tr);
+            }
+            container.appendChild(table);
+            message.textContent = "Table generated.";
+        });
+    </script>
+</body>
+</html>

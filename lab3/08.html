@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calculator</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card calculator">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 8</p>
+        <h1>Calculator</h1>
+        <label class="visually-hidden" for="calculator-display">Calculator display</label>
+        <input id="calculator-display" class="calculator-display" type="text" inputmode="decimal" placeholder="0" readonly aria-live="polite">
+        <div id="calculator-buttons" class="keypad">
+            <button type="button" data-value="7">7</button><button type="button" data-value="8">8</button><button type="button" data-value="9">9</button><button type="button" data-operator="/">÷</button>
+            <button type="button" data-value="4">4</button><button type="button" data-value="5">5</button><button type="button" data-value="6">6</button><button type="button" data-operator="*">×</button>
+            <button type="button" data-value="1">1</button><button type="button" data-value="2">2</button><button type="button" data-value="3">3</button><button type="button" data-operator="-">−</button>
+            <button type="button" data-value="0">0</button><button type="button" data-value=".">.</button><button type="button" data-action="clear">C</button><button type="button" data-operator="+">+</button>
+            <button type="button" data-action="equals" class="equals">=</button>
+        </div>
+        <p id="calculator-message" class="hint" aria-live="polite"></p>
+    </main>
+    <script>
+        const display = document.getElementById("calculator-display");
+        const message = document.getElementById("calculator-message");
+        let storedValue = null, pendingOperator = null, startNewNumber = true;
+        document.getElementById("calculator-buttons").addEventListener("click", (event) => {
+            const button = event.target.closest("button");
+            if (!button) return;
+            message.textContent = "";
+            if (button.dataset.action === "clear") {
+                display.value = ""; storedValue = null; pendingOperator = null; startNewNumber = true; return;
+            }
+            if (button.dataset.value !== undefined) {
+                const digit = button.dataset.value;
+                if (startNewNumber) { display.value = digit === "." ? "0." : digit; startNewNumber = false; }
+                else if (digit !== "." || !display.value.includes(".")) display.value += digit;
+                return;
+            }
+            if (button.dataset.operator) {
+                if (display.value === "") return;
+                storedValue = Number(display.value);
+                pendingOperator = button.dataset.operator;
+                startNewNumber = true;
+                return;
+            }
+            if (button.dataset.action === "equals") {
+                if (storedValue === null || !pendingOperator || display.value === "") return;
+                const current = Number(display.value);
+                if (pendingOperator === "/" && current === 0) {
+                    message.textContent = "Cannot divide by zero.";
+                    display.value = "";
+                } else {
+                    const operations = { "+": (a, b) => a + b, "-": (a, b) => a - b, "*": (a, b) => a * b, "/": (a, b) => a / b };
+                    display.value = String(operations[pendingOperator](storedValue, current));
+                }
+                storedValue = null; pendingOperator = null; startNewNumber = true;
+            }
+        });
+    </script>
+</body>
+</html>

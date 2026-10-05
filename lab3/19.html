@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Events</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 19</p>
+        <h1>Keyboard event viewer</h1>
+        <p>Focus the input and press any key to inspect its key and code values.</p>
+        <label for="keyboard-input">Try a key</label>
+        <input id="keyboard-input" type="text" autocomplete="off">
+        <dl class="key-details">
+            <div><dt>Event</dt><dd id="key-event">Waiting…</dd></div>
+            <div><dt>Key</dt><dd id="key-value">—</dd></div>
+            <div><dt>Code</dt><dd id="code-value">—</dd></div>
+        </dl>
+    </main>
+    <script>
+        const keyInput = document.getElementById("keyboard-input");
+        function displayKey(event) {
+            document.getElementById("key-event").textContent = event.type;
+            document.getElementById("key-value").textContent =
+                event.key === " " ? "Space" : event.key;
+            document.getElementById("code-value").textContent = event.code;
+        }
+        keyInput.addEventListener("keydown", displayKey);
+        keyInput.addEventListener("keyup", displayKey);
+    </script>
+</body>
+</html>

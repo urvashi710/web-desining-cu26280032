@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 3</p>
+        <h1>Student grade calculator</h1>
+        <form id="grade-form">
+            <label for="marks">Marks (0–100)</label>
+            <input id="marks" type="number" min="0" max="100" step="1" required>
+            <button type="submit">Calculate grade</button>
+        </form>
+        <p id="grade-result" class="output" aria-live="polite">Enter marks to see a grade.</p>
+        <p class="hint">Scale: A = 90–100, B = 80–89, C = 70–79, D = 60–69, F = below 60.</p>
+    </main>
+    <script>
+        document.getElementById("grade-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const marks = Number(document.getElementById("marks").value);
+            if (!Number.isInteger(marks) || marks < 0 || marks > 100) {
+                document.getElementById("grade-result").textContent = "Enter a whole number from 0 to 100.";
+                return;
+            }
+            let grade;
+            if (marks >= 90) grade = "A";
+            else if (marks >= 80) grade = "B";
+            else if (marks >= 70) grade = "C";
+            else if (marks >= 60) grade = "D";
+            else grade = "F";
+            let remark;
+            switch (grade) {
+                case "A": remark = "Excellent work!"; break;
+                case "B": remark = "Great job!"; break;
+                case "C": remark = "Good effort."; break;
+                case "D": remark = "Keep practicing."; break;
+                default: remark = "Review the material and try again.";
+            }
+            document.getElementById("grade-result").textContent = `Grade ${grade} — ${remark}`;
+        });
+    </script>
+</body>
+</html>

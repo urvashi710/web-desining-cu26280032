@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic with Prompts</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 1</p>
+        <h1>Arithmetic operations</h1>
+        <p>Enter two numbers to see their sum, difference, product, and quotient.</p>
+        <button id="calculate" type="button">Enter two numbers</button>
+        <pre id="results" class="output" aria-live="polite">Your results will appear here.</pre>
+    </main>
+    <script>
+        document.getElementById("calculate").addEventListener("click", () => {
+            const firstInput = prompt("Enter the first number:");
+            if (firstInput === null) return;
+            const secondInput = prompt("Enter the second number:");
+            if (secondInput === null) return;
+            const first = Number(firstInput);
+            const second = Number(secondInput);
+            if (firstInput.trim() === "" || secondInput.trim() === "" ||
+                !Number.isFinite(first) || !Number.isFinite(second)) {
+                alert("Please enter two valid numbers.");
+                return;
+            }
+            const lines = [
+                `Sum: ${first + second}`,
+                `Difference: ${first - second}`,
+                `Product: ${first * second}`,
+                `Quotient: ${second === 0 ? "undefined (cannot divide by zero)" : first / second}`
+            ];
+            console.log("Arithmetic results:", lines);
+            document.getElementById("results").textContent = lines.join("\n");
+            alert(lines.join("\n"));
+        });
+    </script>
+</body>
+</html>

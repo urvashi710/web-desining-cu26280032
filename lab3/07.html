@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Object and this</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 7</p>
+        <h1>Student object</h1>
+        <p>Object methods use <code>this</code> to read and update the current student’s properties.</p>
+        <form id="student-form">
+            <label for="student-name">Student name</label>
+            <input id="student-name" type="text" value="Avery Chen" required>
+            <label for="student-course">Course</label>
+            <input id="student-course" type="text" value="Computer Science" required>
+            <label for="student-score">Score</label>
+            <input id="student-score" type="number" min="0" max="100" value="88" required>
+            <button type="submit">Create student</button>
+        </form>
+        <p id="student-result" class="output" aria-live="polite"></p>
+    </main>
+    <script>
+        document.getElementById("student-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const student = {
+                name: document.getElementById("student-name").value,
+                course: document.getElementById("student-course").value,
+                score: Number(document.getElementById("student-score").value),
+                introduce() {
+                    return `${this.name} studies ${this.course}.`;
+                },
+                getResult() {
+                    return `${this.introduce()} Score: ${this.score}/100.`;
+                }
+            };
+            document.getElementById("student-result").textContent = student.getResult();
+        });
+    </script>
+</body>
+</html>

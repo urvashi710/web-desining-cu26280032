@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 5</p>
+        <h1>Reverse and check a palindrome</h1>
+        <form id="palindrome-form">
+            <label for="phrase">Enter a word or phrase</label>
+            <input id="phrase" type="text" required>
+            <button type="submit">Check phrase</button>
+        </form>
+        <p id="palindrome-result" class="output" aria-live="polite">The result will appear here.</p>
+        <p class="hint">Palindrome check ignores spaces, punctuation, and letter case.</p>
+    </main>
+    <script>
+        document.getElementById("palindrome-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const original = document.getElementById("phrase").value;
+            const normalized = original.toLocaleLowerCase().replace(/[\W_]/g, "");
+            const reversed = Array.from(original).reverse().join("");
+            const isPalindrome = normalized.length > 0 &&
+                normalized === Array.from(normalized).reverse().join("");
+            document.getElementById("palindrome-result").textContent =
+                `Reversed: ${reversed}\n${isPalindrome ? "This is a palindrome." : "This is not a palindrome."}`;
+        });
+    </script>
+</body>
+</html>

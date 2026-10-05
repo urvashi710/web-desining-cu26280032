@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Exception Handling</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 14</p>
+        <h1>Parse JSON safely</h1>
+        <form id="json-form">
+            <label for="json-input">JSON string</label>
+            <textarea id="json-input" rows="5" required>{"name":"Avery","course":"Web Design"}</textarea>
+            <button type="submit">Parse JSON</button>
+        </form>
+        <p id="json-result" class="output" aria-live="polite"></p>
+    </main>
+    <script>
+        document.getElementById("json-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const output = document.getElementById("json-result");
+            output.textContent = "";
+            try {
+                const parsed = JSON.parse(document.getElementById("json-input").value);
+                output.textContent = `Parsed successfully:\n${JSON.stringify(parsed, null, 2)}`;
+            } catch (error) {
+                if (error instanceof SyntaxError) output.textContent = `Invalid JSON: ${error.message}`;
+                else throw error;
+            } finally {
+                output.dataset.parseAttempted = "true";
+            }
+        });
+    </script>
+</body>
+</html>

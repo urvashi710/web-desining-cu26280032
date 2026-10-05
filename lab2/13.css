@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 36px 16px; background: #f8fafc; color: #1e293b; font: 16px/1.5 Arial, sans-serif; }
+.panel { width: min(100%, 560px); margin: auto; padding: 32px; border-radius: 14px; background: white; box-shadow: 0 12px 32px #0f172a18; }
+h1 { margin-top: 0; }
+form { display: grid; gap: 20px; }
+fieldset { display: grid; gap: 12px; margin: 0; padding: 18px; border: 1px solid #cbd5e1; border-radius: 10px; }
+legend { padding: 0 8px; font-weight: 700; }
+.custom-choice { position: relative; display: flex; align-items: center; gap: 11px; min-height: 28px; cursor: pointer; }
+.custom-choice input { position: absolute; width: 22px; height: 22px; margin: 0; opacity: 0; cursor: pointer; }
+.control { position: relative; display: inline-block; flex: 0 0 20px; width: 20px; height: 20px; border: 2px solid #94a3b8; border-radius: 5px; background: white; }
+input[type="radio"] + .control { border-radius: 50%; }
+.custom-choice input:focus-visible ~ .control { outline: 3px solid #bfdbfe; outline-offset: 2px; }
+.custom-choice input:checked ~ .control { border-color: #2563eb; background: #2563eb; }
+.custom-choice input:checked ~ .control::after { position: absolute; top: 2px; left: 6px; width: 5px; height: 10px; border: solid white; border-width: 0 2px 2px 0; content: ""; transform: rotate(45deg); }
+.custom-choice input[type="radio"]:checked ~ .control::after { top: 4px; left: 4px; width: 8px; height: 8px; border: 0; border-radius: 50%; background: white; transform: none; }
+button { padding: 12px; border: 0; border-radius: 7px; background: #2563eb; color: white; font: inherit; font-weight: 700; cursor: pointer; }

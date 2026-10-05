@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Form Fields</title>
+    <link rel="stylesheet" href="17.css">
+</head>
+<body>
+    <main class="panel">
+        <h1>Feedback request</h1>
+        <p>This form demonstrates a non-sensitive hidden field alongside visible inputs.</p>
+        <form action="#" method="post">
+            <input type="hidden" name="form-source" value="lab2-feedback-demo">
+            <label for="hidden-name">Name</label>
+            <input id="hidden-name" name="name" type="text" required>
+            <label for="hidden-feedback">Feedback</label>
+            <textarea id="hidden-feedback" name="feedback" rows="4" required></textarea>
+            <button type="submit">Submit feedback</button>
+        </form>
+        <p class="security-note"><strong>Security note:</strong> Hidden inputs are visible and editable in the browser. Never put passwords, session tokens, or other secrets in them. Use secure server-side sessions and appropriately protected cookies for sensitive session data.</p>
+    </main>
+</body>
+</html>

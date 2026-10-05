@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Manipulation</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 6</p>
+        <h1>Array manipulation</h1>
+        <p>Start with a list of numbers. Add, remove, map, or filter its values.</p>
+        <form id="array-form" class="inline-form">
+            <label for="array-value">Number</label>
+            <input id="array-value" type="number" step="any" value="6" required>
+            <button type="submit">Push</button>
+        </form>
+        <div class="button-row">
+            <button id="pop-button" type="button">Pop last</button>
+            <button id="sort-button" type="button">Sort ascending</button>
+            <button id="map-button" type="button">Double with map</button>
+            <button id="filter-button" type="button">Filter values &gt; 5</button>
+            <button id="reset-button" type="button" class="secondary">Reset</button>
+        </div>
+        <p id="array-result" class="output" aria-live="polite"></p>
+    </main>
+    <script>
+        const initialValues = [8, 2, 5, 3];
+        let values = [...initialValues];
+        const result = document.getElementById("array-result");
+        function render(message = "") {
+            result.textContent = `${message}${message ? "\n" : ""}Current array: [${values.join(", ")}]`;
+        }
+        document.getElementById("array-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            values.push(Number(document.getElementById("array-value").value));
+            render("Added a value with push().");
+        });
+        document.getElementById("pop-button").addEventListener("click", () => {
+            if (!values.length) { render("Nothing to remove."); return; }
+            render(`Removed ${values.pop()} with pop().`);
+        });
+        document.getElementById("sort-button").addEventListener("click", () => {
+            values.sort((a, b) => a - b);
+            render("Sorted numerically.");
+        });
+        document.getElementById("map-button").addEventListener("click", () => {
+            values = values.map((value) => value * 2);
+            render("Doubled every value with map().");
+        });
+        document.getElementById("filter-button").addEventListener("click", () => {
+            values = values.filter((value) => value > 5);
+            render("Kept values greater than 5 with filter().");
+        });
+        document.getElementById("reset-button").addEventListener("click", () => {
+            values = [...initialValues];
+            render("Reset the array.");
+        });
+        render();
+    </script>
+</body>
+</html>

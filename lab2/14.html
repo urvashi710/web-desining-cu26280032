@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Range and Number Inputs</title>
+    <link rel="stylesheet" href="14.css">
+</head>
+<body>
+    <main class="panel">
+        <h1>Set your target</h1>
+        <form action="#" method="post">
+            <label for="target-range">Weekly study target <output id="range-output" for="target-range">10 hours</output></label>
+            <input id="target-range" name="hours-slider" type="range" min="1" max="40" value="10">
+            <label for="target-number">Hours per week</label>
+            <div class="number-control">
+                <input id="target-number" name="hours" type="number" min="1" max="40" value="10" required>
+                <span>hours</span>
+            </div>
+            <button type="submit">Save target</button>
+        </form>
+    </main>
+    <script>
+        const slider = document.getElementById("target-range");
+        const number = document.getElementById("target-number");
+        const output = document.getElementById("range-output");
+
+        function updateTarget(source, destination) {
+            const value = Number(source.value);
+            if (source.value !== "" && Number.isFinite(value)) {
+                destination.value = String(value);
+                output.value = `${value} ${value === 1 ? "hour" : "hours"}`;
+                output.textContent = output.value;
+            }
+        }
+
+        slider.addEventListener("input", () => updateTarget(slider, number));
+        number.addEventListener("input", () => updateTarget(number, slider));
+    </script>
+</body>
+</html>

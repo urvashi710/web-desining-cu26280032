@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Schedule with Merged Cells</title>
+</head>
+<body>
+    <h1>Course Schedule</h1>
+    <table border="1">
+        <caption>Monday and Tuesday Classes</caption>
+        <thead>
+            <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Time</th>
+                <th scope="col">Course</th>
+                <th scope="col">Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="rowgroup" rowspan="2">Monday</th>
+                <td>9:00-10:00</td>
+                <td>Mathematics</td>
+                <td>Room 101</td>
+            </tr>
+            <tr>
+                <td>10:15-11:15</td>
+                <td>Computer Science</td>
+                <td>Room 204</td>
+            </tr>
+            <tr>
+                <th scope="rowgroup" rowspan="2">Tuesday</th>
+                <td>9:00-10:00</td>
+                <td>Physics</td>
+                <td>Room 110</td>
+            </tr>
+            <tr>
+                <td>10:15-11:15</td>
+                <td>English</td>
+                <td>Room 305</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

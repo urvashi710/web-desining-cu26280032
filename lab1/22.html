@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <form>
+        <p>
+            <label for="profile-name">Name:</label>
+            <input type="text" id="profile-name" name="name">
+        </p>
+
+        <fieldset>
+            <legend>Gender</legend>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="male"> Male</label>
+            <label><input type="radio" name="gender" value="prefer-not-to-say"> Prefer not to say</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Hobbies</legend>
+            <label><input type="checkbox" name="hobbies" value="reading"> Reading</label>
+            <label><input type="checkbox" name="hobbies" value="music"> Music</label>
+            <label><input type="checkbox" name="hobbies" value="sports"> Sports</label>
+        </fieldset>
+
+        <p><button type="submit">Save Profile</button></p>
+    </form>
+</body>
+</html>

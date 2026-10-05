@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 36px 16px; background: #f8fafc; color: #1e293b; font: 16px/1.5 Arial, sans-serif; }
+.panel { width: min(100%, 850px); margin: auto; padding: 30px; border-radius: 14px; background: white; box-shadow: 0 12px 32px #0f172a18; }
+h1 { margin-top: 0; }
+.table-wrap { overflow-x: auto; margin: 18px 0; }
+table { width: 100%; min-width: 560px; border-collapse: collapse; text-align: left; }
+caption { padding: 10px; color: #64748b; text-align: left; }
+th, td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
+thead { background: #1e3a8a; color: white; }
+tbody tr:nth-child(even) { background: #eff6ff; }
+tbody tr:hover { background: #dbeafe; }
+td input { width: 100%; min-width: 100px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 5px; font: inherit; }
+button { padding: 12px 18px; border: 0; border-radius: 7px; background: #1e3a8a; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }

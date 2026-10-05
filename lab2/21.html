@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Form Labels</title>
+    <link rel="stylesheet" href="21.css">
+</head>
+<body>
+    <main class="panel">
+        <h1>Profile information</h1>
+        <form action="#" method="post">
+            <div class="field">
+                <label for="profile-name">Full name</label>
+                <input id="profile-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+                <label for="profile-email">Email address</label>
+                <input id="profile-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+                <label for="profile-country">Country</label>
+                <select id="profile-country" name="country">
+                    <option value="">Select a country</option>
+                    <option value="ca">Canada</option>
+                    <option value="in">India</option>
+                    <option value="us">United States</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="profile-bio">Short bio</label>
+                <textarea id="profile-bio" name="bio" rows="4"></textarea>
+            </div>
+            <button type="submit">Save profile</button>
+        </form>
+    </main>
+</body>
+</html>

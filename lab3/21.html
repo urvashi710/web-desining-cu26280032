@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback and setTimeout</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 21</p>
+        <h1>Asynchronous callback</h1>
+        <p>Click the button to schedule a callback that runs after a short delay.</p>
+        <button id="run-callback" type="button">Run callback</button>
+        <ol id="callback-log" class="item-list" aria-live="polite"></ol>
+    </main>
+    <script>
+        const log = document.getElementById("callback-log");
+        function addLog(message) {
+            const item = document.createElement("li");
+            item.textContent = `${new Date().toLocaleTimeString()} — ${message}`;
+            log.appendChild(item);
+        }
+        function doLater(callback) {
+            setTimeout(() => callback("The asynchronous callback has run."), 1500);
+        }
+        document.getElementById("run-callback").addEventListener("click", () => {
+            addLog("Callback scheduled; the page can keep responding in the meantime.");
+            doLater(addLog);
+        });
+    </script>
+</body>
+</html>

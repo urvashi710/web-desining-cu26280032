@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 4</p>
+        <h1>Fibonacci series</h1>
+        <form id="fibonacci-form">
+            <label for="term-count">Number of terms (1–100)</label>
+            <input id="term-count" type="number" min="1" max="100" value="10" required>
+            <button type="submit">Generate series</button>
+        </form>
+        <h2>Using for loop</h2><p id="for-result" class="output" aria-live="polite"></p>
+        <h2>Using while loop</h2><p id="while-result" class="output"></p>
+        <h2>Using do-while loop</h2><p id="do-result" class="output"></p>
+    </main>
+    <script>
+        function fibonacciFor(count) {
+            const values = [];
+            let a = 0, b = 1;
+            for (let i = 0; i < count; i++) { values.push(a); [a, b] = [b, a + b]; }
+            return values;
+        }
+        function fibonacciWhile(count) {
+            const values = [];
+            let a = 0, b = 1, i = 0;
+            while (i < count) { values.push(a); [a, b] = [b, a + b]; i++; }
+            return values;
+        }
+        function fibonacciDoWhile(count) {
+            const values = [];
+            let a = 0, b = 1, i = 0;
+            if (count > 0) {
+                do { values.push(a); [a, b] = [b, a + b]; i++; } while (i < count);
+            }
+            return values;
+        }
+        document.getElementById("fibonacci-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const count = Number(document.getElementById("term-count").value);
+            if (!Number.isInteger(count) || count < 1 || count > 100) return;
+            document.getElementById("for-result").textContent = fibonacciFor(count).join(", ");
+            document.getElementById("while-result").textContent = fibonacciWhile(count).join(", ");
+            document.getElementById("do-result").textContent = fibonacciDoWhile(count).join(", ");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery Slider</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card gallery-card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 16</p>
+        <h1>Color gallery</h1>
+        <figure>
+            <img id="gallery-image" alt="">
+            <figcaption id="gallery-caption" aria-live="polite"></figcaption>
+        </figure>
+        <div class="button-row">
+            <button id="previous-image" type="button">Previous</button>
+            <button id="next-image" type="button">Next</button>
+        </div>
+    </main>
+    <script>
+        function createArtwork(title, color, accent) {
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420"><rect width="800" height="420" fill="${color}"/><circle cx="560" cy="160" r="110" fill="${accent}" opacity=".8"/><path d="M0 340 Q190 190 390 340 T800 300 V420 H0Z" fill="${accent}" opacity=".55"/><text x="44" y="90" fill="white" font-family="Arial,sans-serif" font-size="42" font-weight="700">${title}</text></svg>`;
+            return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+        }
+        const images = [
+            { src: createArtwork("Morning light", "#0e7490", "#67e8f9"), alt: "Abstract turquoise landscape with a bright circle" },
+            { src: createArtwork("Soft horizon", "#6d28d9", "#c4b5fd"), alt: "Abstract violet landscape with a soft horizon" },
+            { src: createArtwork("Golden hour", "#c2410c", "#fdba74"), alt: "Abstract orange landscape in golden colors" }
+        ];
+        let currentIndex = 0;
+        const image = document.getElementById("gallery-image");
+        const caption = document.getElementById("gallery-caption");
+        function showImage() {
+            const current = images[currentIndex];
+            image.src = current.src;
+            image.alt = current.alt;
+            caption.textContent = `Image ${currentIndex + 1} of ${images.length}: ${current.alt}`;
+        }
+        document.getElementById("previous-image").addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage();
+        });
+        document.getElementById("next-image").addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage();
+        });
+        showImage();
+    </script>
+</body>
+</html>

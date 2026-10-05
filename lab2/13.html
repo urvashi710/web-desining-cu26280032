@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Choice Controls</title>
+    <link rel="stylesheet" href="13.css">
+</head>
+<body>
+    <main class="panel">
+        <h1>Preferences</h1>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Choose a plan</legend>
+                <label class="custom-choice">
+                    <input type="radio" name="plan" value="basic" required>
+                    <span class="control" aria-hidden="true"></span>
+                    <span>Basic</span>
+                </label>
+                <label class="custom-choice">
+                    <input type="radio" name="plan" value="plus">
+                    <span class="control" aria-hidden="true"></span>
+                    <span>Plus</span>
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Updates</legend>
+                <label class="custom-choice">
+                    <input type="checkbox" name="updates" value="email">
+                    <span class="control" aria-hidden="true"></span>
+                    <span>Email me product updates</span>
+                </label>
+                <label class="custom-choice">
+                    <input type="checkbox" name="updates" value="newsletter">
+                    <span class="control" aria-hidden="true"></span>
+                    <span>Subscribe to the newsletter</span>
+                </label>
+            </fieldset>
+            <button type="submit">Save preferences</button>
+        </form>
+    </main>
+</body>
+</html>

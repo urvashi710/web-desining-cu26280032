@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="12.css">
+</head>
+<body>
+    <main class="checkout">
+        <h1>Secure checkout</h1>
+        <p>Payment details</p>
+        <form action="#" method="post">
+            <label for="billing-name">Name on card</label>
+            <input id="billing-name" name="billing-name" autocomplete="cc-name" required>
+            <label for="billing-email">Email receipt</label>
+            <input id="billing-email" name="email" type="email" autocomplete="email" required>
+            <label for="card-number">Card number</label>
+            <input id="card-number" name="card-number" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" required>
+            <div class="card-details">
+                <div><label for="expiry">Expiry</label><input id="expiry" name="expiry" autocomplete="cc-exp" placeholder="MM/YY" required></div>
+                <div><label for="security-code">Security code</label><input id="security-code" name="security-code" inputmode="numeric" autocomplete="cc-csc" required></div>
+            </div>
+            <label for="billing-address">Billing address</label>
+            <input id="billing-address" name="address" autocomplete="street-address" required>
+            <button type="submit">Continue to payment</button>
+        </form>
+        <p class="demo-note">Demo form only; no payment is processed.</p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 11</p>
+        <h1>Mouseover and mouseout</h1>
+        <div id="hover-box" class="hover-box" tabindex="0">Hover over or focus this box</div>
+        <p id="hover-status" class="hint" aria-live="polite">The box changes color while active.</p>
+    </main>
+    <script>
+        const box = document.getElementById("hover-box");
+        const status = document.getElementById("hover-status");
+        function activate() { box.classList.add("is-active"); status.textContent = "The box is active."; }
+        function deactivate() { box.classList.remove("is-active"); status.textContent = "The box is inactive."; }
+        box.addEventListener("mouseover", activate);
+        box.addEventListener("mouseout", deactivate);
+        box.addEventListener("focus", activate);
+        box.addEventListener("blur", deactivate);
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure Counter</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 13</p>
+        <h1>Private counter</h1>
+        <p>The count is kept in a closure and can only be changed through its methods.</p>
+        <p id="counter-value" class="counter" aria-live="polite">0</p>
+        <div class="button-row">
+            <button id="decrement" type="button">− Decrement</button>
+            <button id="increment" type="button">+ Increment</button>
+        </div>
+    </main>
+    <script>
+        function createCounter(initialValue = 0) {
+            let count = initialValue;
+            return {
+                increment() { count++; return count; },
+                decrement() { count--; return count; },
+                getValue() { return count; }
+            };
+        }
+        const counter = createCounter();
+        const value = document.getElementById("counter-value");
+        document.getElementById("increment").addEventListener("click", () => {
+            value.textContent = counter.increment();
+        });
+        document.getElementById("decrement").addEventListener("click", () => {
+            value.textContent = counter.decrement();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding Steps</title>
+    <link rel="stylesheet" href="20.css">
+</head>
+<body>
+    <main class="onboarding">
+        <h1>Get started</h1>
+        <input class="step-toggle" type="radio" name="step" id="step-one" checked>
+        <input class="step-toggle" type="radio" name="step" id="step-two">
+        <input class="step-toggle" type="radio" name="step" id="step-three">
+        <nav aria-label="Onboarding steps">
+            <label for="step-one">1. Profile</label>
+            <label for="step-two">2. Preferences</label>
+            <label for="step-three">3. Finish</label>
+        </nav>
+        <section class="step step-one">
+            <h2>Your profile</h2>
+            <p>Welcome! Start by adding your name and email address.</p>
+            <label for="onboard-name">Name</label>
+            <input id="onboard-name" name="name" type="text" autocomplete="name">
+            <label for="onboard-email">Email</label>
+            <input id="onboard-email" name="email" type="email" autocomplete="email">
+            <label class="next" for="step-two">Next: preferences</label>
+        </section>
+        <section class="step step-two">
+            <h2>Your preferences</h2>
+            <p>Choose the updates you would like to receive.</p>
+            <label class="check-row"><input type="checkbox" name="updates" value="product"> Product news</label>
+            <label class="check-row"><input type="checkbox" name="updates" value="tips"> Helpful tips</label>
+            <label class="next" for="step-three">Next: finish</label>
+            <label class="back" for="step-one">Back</label>
+        </section>
+        <section class="step step-three">
+            <h2>You’re all set</h2>
+            <p>Your onboarding choices are ready. This CSS-only example demonstrates step visibility; connect a real form workflow to save data.</p>
+            <label class="back" for="step-two">Back to preferences</label>
+        </section>
+    </main>
+</body>
+</html>

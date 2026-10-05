@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime or Composite</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 2</p>
+        <h1>Prime number checker</h1>
+        <form id="prime-form">
+            <label for="prime-number">Enter a whole number</label>
+            <input id="prime-number" type="number" step="1" required>
+            <button type="submit">Check number</button>
+        </form>
+        <p id="prime-result" class="output" aria-live="polite">The result will appear here.</p>
+    </main>
+    <script>
+        function classifyNumber(number) {
+            if (!Number.isInteger(number) || number < 2) {
+                return `${number} is neither prime nor composite.`;
+            }
+            for (let divisor = 2; divisor <= Math.sqrt(number); divisor++) {
+                if (number % divisor === 0) return `${number} is composite.`;
+            }
+            return `${number} is prime.`;
+        }
+        document.getElementById("prime-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const number = Number(document.getElementById("prime-number").value);
+            document.getElementById("prime-result").textContent = classifyNumber(number);
+        });
+    </script>
+</body>
+</html>

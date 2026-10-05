@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Match Validation</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 10</p>
+        <h1>Create a password</h1>
+        <form id="password-form" novalidate>
+            <label for="password">Password</label>
+            <input id="password" type="password" minlength="8" autocomplete="new-password" required>
+            <label for="confirm-password">Confirm password</label>
+            <input id="confirm-password" type="password" autocomplete="new-password" required>
+            <p id="password-message" class="hint" aria-live="polite">Use at least 8 characters.</p>
+            <button type="submit">Create account</button>
+        </form>
+        <p id="password-result" class="output" aria-live="polite"></p>
+    </main>
+    <script>
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirm-password");
+        const message = document.getElementById("password-message");
+        function validatePasswords() {
+            if (!password.value || !confirmPassword.value) {
+                confirmPassword.setCustomValidity("");
+                message.textContent = "Use at least 8 characters.";
+                return false;
+            }
+            const matches = password.value === confirmPassword.value;
+            confirmPassword.setCustomValidity(matches ? "" : "Passwords do not match.");
+            message.textContent = matches ? "Passwords match." : "Passwords do not match.";
+            return matches;
+        }
+        password.addEventListener("input", validatePasswords);
+        confirmPassword.addEventListener("input", validatePasswords);
+        document.getElementById("password-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const valid = password.value.length >= 8 && validatePasswords();
+            document.getElementById("password-result").textContent =
+                valid ? "Password is valid. Form is ready to submit." : "Enter a password of at least 8 characters and make sure both fields match.";
+            if (!valid) confirmPassword.reportValidity();
+        });
+    </script>
+</body>
+</html>

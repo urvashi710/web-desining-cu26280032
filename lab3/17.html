@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Counter</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 17</p>
+        <h1>Count vowels</h1>
+        <form id="vowel-form">
+            <label for="paragraph">Enter a paragraph</label>
+            <textarea id="paragraph" rows="6" placeholder="Type or paste some text" required></textarea>
+            <button type="submit">Count vowels</button>
+        </form>
+        <p id="vowel-result" class="output" aria-live="polite"></p>
+    </main>
+    <script>
+        function countVowels(text) {
+            const matches = text.match(/[aeiou]/gi);
+            return matches ? matches.length : 0;
+        }
+        document.getElementById("vowel-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const text = document.getElementById("paragraph").value;
+            document.getElementById("vowel-result").textContent = `Vowels found: ${countVowels(text)}`;
+        });
+    </script>
+</body>
+</html>

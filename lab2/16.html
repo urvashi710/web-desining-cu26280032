@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Evaluation</title>
+    <link rel="stylesheet" href="16.css">
+</head>
+<body>
+    <main class="panel">
+        <h1>Employee evaluation</h1>
+        <form action="#" method="post">
+            <div class="form-row">
+                <div class="float-field"><label for="employee-name">Employee name</label><input id="employee-name" name="employee-name" required></div>
+                <div class="float-field"><label for="review-date">Review date</label><input id="review-date" name="review-date" type="date" required></div>
+                <div class="clear"></div>
+            </div>
+            <div class="form-row">
+                <div class="float-field"><label for="reviewer">Reviewer</label><input id="reviewer" name="reviewer" required></div>
+                <div class="float-field"><label for="rating">Overall rating</label><select id="rating" name="rating" required><option value="" selected disabled>Choose rating</option><option>Excellent</option><option>Good</option><option>Needs improvement</option></select></div>
+                <div class="clear"></div>
+            </div>
+            <label for="evaluation-notes">Evaluation notes</label>
+            <textarea id="evaluation-notes" name="notes" rows="4"></textarea>
+            <button type="submit">Save evaluation</button>
+        </form>
+    </main>
+</body>
+</html>

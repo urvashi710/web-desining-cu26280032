@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Syntax Examples</title>
+    <link rel="stylesheet" href="03.css">
+</head>
+<body>
+    <main class="card">
+        <p class="eyebrow">Lab Sheet 3 · Exercise 15</p>
+        <h1>ES6 features</h1>
+        <p>See arrow functions, template literals, and destructuring in action.</p>
+        <form id="es6-form">
+            <label for="es6-name">Name</label>
+            <input id="es6-name" type="text" value="Taylor" required>
+            <label for="es6-course">Course</label>
+            <input id="es6-course" type="text" value="JavaScript" required>
+            <button type="submit">Build greeting</button>
+        </form>
+        <p id="es6-result" class="output" aria-live="polite"></p>
+    </main>
+    <script>
+        const makeGreeting = ({ name, course }) => `Hello, ${name}! Welcome to ${course}.`;
+        document.getElementById("es6-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const student = {
+                name: document.getElementById("es6-name").value,
+                course: document.getElementById("es6-course").value
+            };
+            const { name, course } = student;
+            document.getElementById("es6-result").textContent =
+                `${makeGreeting({ name, course })}\n(Generated with an arrow function, template literal, and destructuring.)`;
+        });
+    </script>
+</body>
+</html>
